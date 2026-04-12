@@ -1,0 +1,41 @@
+<ul class="nav inspector-tabs justify-content-between border-bottom border-secondary px-2 bg-dark flex-shrink-0"
+    id="detail-tabs"
+>
+    {# Headers Tab#}
+    <li class="nav-item">
+        <button class="nav-link active d-flex align-items-center gap-1"
+                onclick="switchTab('headers', this)">
+            <i class="bi bi-list-ul"></i> Headers
+            <span class="badge rounded-pill bg-secondary ms-1" id="badge-headers">
+                {{ webhook_requests[0].headers | length if webhook_requests else 0 }}
+            </span>
+        </button>
+    </li>
+
+    {# Body Tab#}
+    <li class="nav-item">
+        <button class="nav-link d-flex align-items-center gap-1"
+                onclick="switchTab('body', this)">
+            <i class="bi bi-braces"></i> Body
+        </button>
+    </li>
+
+    {# Query Params Tab#}
+    <li class="nav-item">
+        <button class="nav-link d-flex align-items-center gap-1"
+                onclick="switchTab('query', this)">
+            <i class="bi bi-question-circle"></i> Query Params
+            <span class="badge rounded-pill bg-secondary ms-1" id="badge-query">
+                {{ webhook_requests[0].query_params | length if webhook_requests else 0 }}
+            </span>
+        </button>
+    </li>
+
+    {# Raw Tab#}
+    <li class="nav-item me-3">
+        <button class="nav-link d-flex align-items-center gap-1"
+                onclick="switchTab('raw', this)">
+            <i class="bi bi-terminal"></i> Raw
+        </button>
+    </li>
+</ul>

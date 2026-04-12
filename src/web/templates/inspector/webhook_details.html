@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Webhook Inspector - {{ webhook_id }}{% endblock %}
+
+{% block extra_styles %}
+    {% include "inspector/styles/_style.html" %}
+{% endblock %}
+
+{% block main %}
+<div class="d-flex flex-column flex-grow-1">
+    {# ── Endpoint bar ──────────────────────────────── #}
+    {% include "inspector/components/endpoint_bar.html" %}
+
+    {# Two-panel Inspector #}
+    <div class="d-flex flex-grow-1 mt-2 mx-3 mb-3 gap-0">
+
+        {# ── LEFT SIDEBAR ──────────────────────────────────── #}
+        {% include "inspector/components/sidebar.html" %}
+
+        {# ── RIGHT DETAIL PANEL ────────────────────────────── #}
+        {% include "inspector/components/right_panel.html" %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script>
+        const requests = {
+            {% for req in webhook_requests %}
+            "{{ req.id }}": {
+                method:      "{{ req.method }}",
+                id:          "{{ req.id }}",
+                ip:          "{{ req.client_ip }}",
+                time:        "{{ req.created_at.strftime("%Y-%m-%d %#I:%M:%S %p") }}",
+                host:        "{{ req.headers.host }}",
+                size:        "{{ req.body_size }}",
+                headers:     {{ req.headers | tojson }},
+                body:        {{ req.body | tojson }},
+                type:        "{{ req.body_type }}",
+                query:       {{ req.query_params | tojson }},
+                raw:         {{ req.raw_body | tojson }},
+            },
+            {% endfor %}
+        };
+        let currentTab = 'headers';
+    </script>
+    <script src="{{ url_for('static', path='js/inspector.js') }}"></script>
+{% endblock %}

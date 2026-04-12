@@ -1,0 +1,23 @@
+<div class="tab-pane" id="tab-query">
+    <p class="text-uppercase text-secondary fw-semibold mb-2" style="font-size:11px;letter-spacing:.08em;">
+        Query Parameters
+    </p>
+    <table class="table table-dark table-sm table-bordered align-middle font-monospace small"
+           id="query-table"
+    >
+        {% if webhook_requests and webhook_requests[0].query_params %}
+            {% for key, value in webhook_requests[0].query_params.items() %}
+                <tr>
+                    <td class="text-secondary" style="width:35%;">{{ key }}</td>
+                    <td class="text-light">{{ value }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="2" class="text-secondary text-center fst-italic py-3">
+                    No query parameters
+                </td>
+            </tr>
+        {% endif %}
+    </table>
+</div>

@@ -1,0 +1,31 @@
+<div class="d-flex align-items-center gap-2 mt-3 mx-3 p-2 bg-dark flex-shrink-0 rounded-3 border border-secondary">
+    {# Live indicator #}
+    {% include "inspector/components/live_dot_indicator.html" %}
+
+    <i class="bi bi-link-45deg text-primary fs-5 flex-shrink-0"></i>
+
+    <span id="endpoint-url" class="font-monospace small text-info text-truncate flex-grow-1">
+        {{ request.url }}
+    </span>
+
+    {# Copy Button #}
+    <button id="copy-button" class="btn btn-sm btn-outline-secondary d-flex align-items-center gap-1" onclick="copyEndpoint()">
+        <i class="bi bi-clipboard" id="copy-icon"></i> <span id="button-text">Copy</span>
+    </button>
+
+    {# Test Button #}
+    <button class="btn btn-sm btn-outline-primary d-flex align-items-center gap-1"
+            data-webhook-id="{{ webhook_id }}"
+            onclick="sendTestRequest(this)"
+    >
+        <i class="bi bi-send"></i> Test
+    </button>
+
+    {# Clear Button #}
+    <button class="btn btn-sm btn-outline-danger d-flex align-items-center gap-1"
+            data-webhook-id="{{ webhook_id }}"
+            onclick="clearRequests(this)"
+    >
+        <i class="bi bi-trash3"></i> Clear
+    </button>
+</div>

@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+wheels/
+*.so
+
+# Virtual Environment
+venv/
+.venv/
+env/
+.env
+
+# Environment Variables
+.env.*
+!.env.example
+
+# FastAPI / Uvicorn
+*.log
+
+# Alembic
+alembic/versions/*.pyc
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+commands.txt

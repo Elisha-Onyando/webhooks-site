@@ -1,0 +1,31 @@
+<section class="d-flex flex-column flex-grow-1 border border-secondary border-start-0 rounded-end overflow-hidden"
+         style="background:#0f172a;"
+>
+    {# No-selection placeholder #}
+    {% include "inspector/components/no_selection.html" %}
+
+    {# Request details view #}
+    <div id="detail-view" class="d-flex flex-column flex-grow-1 overflow-hidden {% if not webhook_requests %}d-none{% endif %}">
+
+        {# Detail header row #}
+        {% include "inspector/components/details_header_row.html" %}
+
+        {# Nav tabs #}
+        {% include "inspector/components/navigation_tabs.html" %}
+
+        {# Tab panes #}
+        <div class="flex-grow-1 overflow-y-auto p-3">
+            {# HEADERS #}
+            {% include "inspector/components/request_headers.html" %}
+
+            {# BODY #}
+            {% include "inspector/components/request_body.html" %}
+
+            {# QUERY PARAMS #}
+            {% include "inspector/components/query_params.html" %}
+
+            {# RAW #}
+            {% include "inspector/components/raw_tab.html" %}
+        </div>
+    </div>
+</section>

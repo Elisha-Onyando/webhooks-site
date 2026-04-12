@@ -1,0 +1,15 @@
+<div class="tab-pane" id="tab-body">
+    <p class="text-uppercase text-secondary fw-semibold mb-2" style="font-size:11px;letter-spacing:.08em;">
+        Request Body
+    </p>
+    <pre class="bg-dark border border-secondary rounded p-3 font-monospace small text-info overflow-auto"
+         style="max-height:360px;"
+         id="body-content"
+    >
+        {% if webhook_requests and webhook_requests[0].body %}
+            {{ webhook_requests[0].body }}
+        {% else %}
+            <span class="text-secondary fst-italic">— No body content —</span>
+        {% endif %}
+    </pre>
+</div>

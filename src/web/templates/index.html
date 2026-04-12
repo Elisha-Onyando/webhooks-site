@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center mt-4">
+    <h2 class="mb-4">Welcome to Webhook Inspector</h2>
+    <button onclick="createWebhook()" class="btn mt-2 mx-auto btn-primary fw-bold"
+            style="transition: transform 200ms ease;"
+    >
+        <i class="bi bi-plus-circle-fill"></i>
+        Generate webhook url
+    </button>
+</div>
+
+<div id="result" class="p-4 mx-auto mt-5 mb-5 border border-primary rounded-3"
+     style="background: #1e293b; box-shadow: 0 4px 20px rgba(0,0,0,0.3); width: 800px"
+>
+
+</div>
+{% endblock %}

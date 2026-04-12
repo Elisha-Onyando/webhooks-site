@@ -1,0 +1,13 @@
+<div class="tab-pane" id="tab-raw">
+    <p class="text-uppercase text-secondary fw-semibold mb-2" style="font-size:11px;letter-spacing:.08em;">
+        Raw Request
+    </p>
+    <pre class="bg-dark border border-secondary rounded p-3 font-monospace small text-info overflow-auto"
+         style="max-height:360px;"
+         id="raw-content"
+    >
+        {% if webhook_requests %}
+            {{ webhook_requests[0].raw_body }}
+        {% endif %}
+    </pre>
+</div>

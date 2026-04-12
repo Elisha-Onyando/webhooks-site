@@ -1,0 +1,13 @@
+<div class="overflow-y-auto flex-grow-1" id="request-list">
+    {% if webhook_requests %}
+        {% include "inspector/components/request_item.html" %}
+    {% else %}
+         <div class="d-flex flex-column align-items-center justify-content-center text-secondary gap-2 p-4 text-center"
+                 id="empty-sidebar"
+         >
+             {% include "inspector/components/live_dot_indicator.html" %}
+             <i class="bi bi-inbox fs-2"></i>
+             <small>No requests yet.<br>Send one to your endpoint to see it here.</small>
+         </div>
+    {% endif %}
+</div>
