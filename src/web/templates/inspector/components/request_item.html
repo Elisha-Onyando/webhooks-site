@@ -1,34 +1,42 @@
 {% for req in webhook_requests %}
-    <div class="d-flex flex-column px-3 py-2 border-bottom border-secondary cursor-pointer request-item {% if loop.first %}active bg-dark-subtle{% endif %}"
-         style="border-left:3px solid {% if loop.first %}#6366f1{% else %}transparent{% endif %};cursor:pointer;"
-         data-id="{{ req.id }}"
-         data-method="{{ req.method }}"
-         data-path="{{ req.path }}"
-         data-ip="{{ req.ip }}"
-         onclick="selectRequest('{{ req.id }}', this)"
+<div
+  class="d-flex flex-column px-3 py-2 border-bottom border-secondary cursor-pointer request-item {% if loop.first %}active{% endif %}"
+  data-id="{{ req.id }}"
+  data-method="{{ req.method }}"
+  data-path="{{ req.path }}"
+  data-ip="{{ req.ip }}"
+  onclick="selectRequest('{{ req.id }}', this)"
+>
+  <div class="d-flex align-items-center gap-2 mb-1">
+    <span
+      class="badge border font-monospace method-{{ req.method }}"
+      style="font-size: 10px"
     >
-        <div class="d-flex align-items-center gap-2 mb-1">
-            <span class="badge border font-monospace method-{{ req.method }}" style="font-size:10px;">
-                {{ req.method }}
-            </span>
-            <span class="font-monospace text-primary fw-bold text-truncate" style="font-size:12px;">
-                #{{ req.id }}
-            </span>
-        </div>
+      {{ req.method }}
+    </span>
+    <span
+      class="font-monospace text-primary fw-bold text-truncate"
+      style="font-size: 12px"
+    >
+      #{{ req.id }}
+    </span>
+  </div>
 
-        <div class="d-flex justify-content-between">
-            <small class="text-secondary fs-8">{{ req.client_ip }}</small>
-            <small class="text-secondary">
-                <i class="bi bi-clock" style="font-size:10px;"></i>
-                {{ req.created_at.strftime("%Y-%m-%d %#I:%M:%S %p") }}
-            </small>
-            <a onclick="deleteRequest(this)" title="Delete Request"
-               data-webhook-id="{{ webhook_id }}"
-               data-request-id="{{ req.id }}"
-               class="btn btn-outline-danger btn-sm hidden-sm"
-            >
-                <i class="bi bi-trash3-fill" style="font-size:12px;"></i>
-            </a>
-        </div>
-    </div>
+  <div class="d-flex justify-content-between">
+    <small class="text-secondary fs-8">{{ req.client_ip }}</small>
+    <small class="text-secondary">
+      <i class="bi bi-clock" style="font-size: 10px"></i>
+      {{ req.created_at.strftime("%Y-%m-%d %#I:%M:%S %p") }}
+    </small>
+    <a
+      onclick="deleteRequest(this)"
+      title="Delete Request"
+      data-webhook-id="{{ webhook_id }}"
+      data-request-id="{{ req.id }}"
+      class="btn btn-outline-danger btn-sm hidden-sm"
+    >
+      <i class="bi bi-trash3-fill" style="font-size: 12px"></i>
+    </a>
+  </div>
+</div>
 {% endfor %}
