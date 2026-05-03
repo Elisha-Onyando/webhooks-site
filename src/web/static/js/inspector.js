@@ -145,9 +145,10 @@ function sendTestRequest(btn) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      identifier: `UIREQ${Math.floor(10000 + Math.random() * 90000)}`,
-      message: "Testing the url from the UI",
-      name: "Lee Solutions",
+      identifier: `UIREQ${Math.floor(10000 + Math.random() * 900000)}`,
+      message: "Webhook tested from the UI",
+      developer: "Afrobytes Solutions",
+      owner: "Elisha Onyando",
     }),
   }).then(() => location.reload());
 }
